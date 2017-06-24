@@ -7,7 +7,7 @@ const mySeat = require('./lib/services/myseat');
 const vendor = require('./lib/services/vendor');
 const reelyactive = require('./lib/services/reelyactive');
 
-const gDriveSync = require('./lib/services/gdrive-sync');
+const gDriveSync = require('sync-gdrive');
 
 const config = require('./lib/config');
 const time = require('./lib/services/time');
@@ -85,6 +85,7 @@ router.get('/netatmo/environment', netatmo.handleGetStationData);
 router.get('/time', time.handleGetTime);
 router.get(/directory\/([^/]+)\/logo/, occupantsDirectory.handleGetOccupantLogo);
 router.get(/directory\/([^/]+)\/avatar/, occupantsDirectory.handleGetOccupantAvatar);
+router.get(/directory\/([^/]+)\/?/, occupantsDirectory.handleGetOccupant);
 router.get('/directory', occupantsDirectory.handleGetDirectory);
 router.get('/myseat/chairs', mySeat.handleGetChairs);
 router.get('/reelyactive/devices', reelyactive.handleGetDeviceDirectory);
